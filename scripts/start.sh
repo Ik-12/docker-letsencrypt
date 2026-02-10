@@ -81,16 +81,20 @@ echo "certbot certonly --manual --preferred-challenges dns \
   --manual-auth-hook /scripts/auth.sh \
   --manual-cleanup-hook /scripts/cleanup.sh \
   ${CHAIN_PARAM[@]} $EMAIL_PARAM -d $LETSENCRYPT_DOMAIN \
-  --agree-tos --manual-public-ip-logging-ok --keep $TEST_PARAM"
+  --agree-tos --keep $TEST_PARAM" \
+  --config-dir /etc/letsencrypt \
+  --work-dir /etc/letsencrypt/work \
+  --logs-dir /etc/letsencrypt/logs
 
 # Create certificates
 certbot certonly --manual --preferred-challenges dns \
   --manual-auth-hook /scripts/auth.sh \
   --manual-cleanup-hook /scripts/cleanup.sh \
   "${CHAIN_PARAM[@]}" $EMAIL_PARAM -d $LETSENCRYPT_DOMAIN \
-  --agree-tos --manual-public-ip-logging-ok --keep $TEST_PARAM
-
-chown -R $UID:$GID /etc/letsencrypt
+  --agree-tos --keep $TEST_PARAM \
+  --config-dir /etc/letsencrypt \
+  --work-dir /etc/letsencrypt/work \
+  --logs-dir /etc/letsencrypt/logs
 
 # Check for successful certificate generation
 if [ ! -d "/etc/letsencrypt/live/${LETSENCRYPT_DOMAIN#\*\.}" ] || \
@@ -108,6 +112,8 @@ while :; do
   sleep $((${LETSENCRYPT_DELAY} * 60)) # Convert to seconds
 
   echo "INFO: Attempting SSL certificate renewal"
-  certbot --manual-public-ip-logging-ok renew
-  chown -R $UID:$GID /etc/letsencrypt
+  certbot renew \
+   --config-dir /etc/letsencrypt \
+   --work-dir /etc/letsencrypt/work \
+   --logs-dir /etc/letsencrypt/logs
 done
