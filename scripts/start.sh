@@ -100,7 +100,8 @@ certbot certonly --manual --preferred-challenges dns \
 if [ ! -d "/etc/letsencrypt/live/${LETSENCRYPT_DOMAIN#\*\.}" ] || \
    [ ! -f "/etc/letsencrypt/live/${LETSENCRYPT_DOMAIN#\*\.}/fullchain.pem" ] || \
    [ ! -f "/etc/letsencrypt/live/${LETSENCRYPT_DOMAIN#\*\.}/privkey.pem" ]; then
-  echo "ERROR: Failed to create SSL certificates"
+  echo "ERROR: Failed to create SSL certificates. Exiting in 10 minutes."
+  sleep 10m
   exit 1
 fi
 
