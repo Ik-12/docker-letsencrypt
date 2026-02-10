@@ -1,11 +1,5 @@
 # Let's Encrypt for Duck DNS
 
-[![Build Status](https://github.com/maksimstojkovic/docker-letsencrypt/actions/workflows/docker-build.yml/badge.svg)](https://github.com/maksimstojkovic/docker-letsencrypt)
-[![Docker Pulls](https://img.shields.io/docker/pulls/maksimstojkovic/letsencrypt)](https://hub.docker.com/r/maksimstojkovic/letsencrypt)
-[![Docker Stars](https://img.shields.io/docker/stars/maksimstojkovic/letsencrypt)](https://hub.docker.com/r/maksimstojkovic/letsencrypt)
-[![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/maksimstojkovic/letsencrypt)](https://hub.docker.com/r/maksimstojkovic/letsencrypt)
-[![Docker Image Version (latest by date)](https://img.shields.io/docker/v/maksimstojkovic/letsencrypt)](https://hub.docker.com/r/maksimstojkovic/letsencrypt)
-
 Automatically generates Let's Encrypt certificates using a lightweight Docker container without requiring any ports to be exposed for DNS challenges.
 
 ## Environment Variables
@@ -22,7 +16,7 @@ Automatically generates Let's Encrypt certificates using a lightweight Docker co
 
 ## Notes
 
-* The `DUCKDNS_DOMAIN` should already be pointing to the server with a dynamic IP. The [maksimstojkovic/duckdns](https://github.com/maksimstojkovic/docker-duckdns) image can be used to automatically update the IP address.
+* The `DUCKDNS_DOMAIN` should already be pointing to the server with a dynamic IP. 
 * The format of `DUCKDNS_DOMAIN` should be `<subdomain>.duckdns.org`, regardless of the value of `LETSENCRYPT_WILDCARD`.
 * To use `LETSENCRYPT_DOMAIN` feature, the following DNS records need to be created for ACME authentication (records should not be proxied):
 
