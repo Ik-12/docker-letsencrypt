@@ -1,4 +1,5 @@
 {
+  "autodiscover": true,
   "baseBranches": ["main"],
   "rebaseWhen": "conflicted",
   "labels": ["dependencies"],
