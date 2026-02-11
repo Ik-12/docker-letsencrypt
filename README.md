@@ -2,6 +2,13 @@
 
 Automatically generates Let's Encrypt certificates using a lightweight Docker container without requiring any ports to be exposed for DNS challenges.
 
+## Changes to `maksimstojkovic/docker-letsencrypt`
+
+The main changes in this fork are:
+* Run certbot as non-root user (specified by `UID`)
+* Don't print secrets to log output
+* Updated to lastest Alpine base image
+
 ## Environment Variables
 
 * `DUCKDNS_TOKEN`: Duck DNS account token (obtained from [Duck DNS](https://www.duckdns.org)) (*required*)
