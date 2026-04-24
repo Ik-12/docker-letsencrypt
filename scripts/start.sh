@@ -82,6 +82,7 @@ echo "certbot certonly --manual --preferred-challenges dns \
   --manual-cleanup-hook /scripts/cleanup.sh \
   ${CHAIN_PARAM[@]} $EMAIL_PARAM -d $LETSENCRYPT_DOMAIN \
   --agree-tos --keep $TEST_PARAM" \
+  --non-interactive \
   --config-dir /etc/letsencrypt \
   --work-dir /etc/letsencrypt/work \
   --logs-dir /etc/letsencrypt/logs
@@ -92,6 +93,7 @@ certbot certonly --manual --preferred-challenges dns \
   --manual-cleanup-hook /scripts/cleanup.sh \
   "${CHAIN_PARAM[@]}" $EMAIL_PARAM -d $LETSENCRYPT_DOMAIN \
   --agree-tos --keep $TEST_PARAM \
+  --non-interactive \
   --config-dir /etc/letsencrypt \
   --work-dir /etc/letsencrypt/work \
   --logs-dir /etc/letsencrypt/logs
