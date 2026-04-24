@@ -2,7 +2,6 @@
 
 set -e
 chown -R $UID:$GID /etc/letsencrypt
-chown -R $UID:$GID /certbot
 
 if [ $# -gt 0 ];then
     exec su-exec $UID $@
